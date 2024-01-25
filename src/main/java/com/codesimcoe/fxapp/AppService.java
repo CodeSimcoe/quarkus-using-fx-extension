@@ -1,18 +1,16 @@
 package com.codesimcoe.fxapp;
 
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @ApplicationScoped
 public class AppService {
 
-  public String randomSentence() {
-    double random = Math.random();
-    if (random < 0.33) {
-      return "Hello World!";
-    } else if (random < 0.66) {
-      return "Hola Mundo!";
-    } else {
-      return "Bonjour le monde!";
-    }
+  @RestClient
+  StarWarsRestClient starWarsRestClient;
+
+  public Uni<PlanetsResult> getPlanets() {
+    return this.starWarsRestClient.getPlanets();
   }
 }
