@@ -25,9 +25,9 @@ public class QuarkusFxApp {
 			URL fxml = this.getClass().getResource("/app.fxml");
 			Parent fxmlParent = this.fxmlLoader.load(fxml.openStream());
 
-			Scene scene = new Scene(fxmlParent, 900, 600);
+			Scene scene = new Scene(fxmlParent, 600, 500);
 			stage.setScene(scene);
-			stage.setTitle("Hello World Quarkus + JavaFX ! 👌");
+			stage.setTitle("Hello World Quarkus + JavaFX ! 🪐");
 			stage.show();
 
 		} catch (IOException e) {
@@ -38,6 +38,6 @@ public class QuarkusFxApp {
 	// Observe HotReplacementSetup event
 	void onHotReplacementSetup(@Observes final HotReplacementSetup event) {
 		// do something
-		System.out.println("HotReplacementSetup event fired " + event);
+//		System.out.println("HotReplacementSetup event fired " + event);
 	}
 }

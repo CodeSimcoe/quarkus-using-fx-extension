@@ -41,7 +41,7 @@
 
 <VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codesimcoe.fxapp.AppController">
    <children>
-      <ListView fx:id="planetsListView" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="planetsListView" />
       <Label fx:id="countLabel" />
       <ProgressIndicator fx:id="progressIndicator" visible="false" />
       <Button fx:id="fetchButton" mnemonicParsing="false" onAction="#onButtonClicked" text="Fetch planets" />
