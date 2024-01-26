@@ -1,58 +1,44 @@
 package com.codesimcoe.fxapp;
 
 import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressIndicator;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+
+import java.io.IOException;
+import java.net.URL;
 
 @Dependent
 public class AppController {
 
   @Inject
-  AppService appService;
+  Instance<FXMLLoader> fxmlLoaderInstance;
 
   @FXML
-  private ListView<Planet> planetsListView;
-
-  @FXML
-  private Label countLabel;
-
-  @FXML
-  private ProgressIndicator progressIndicator;
-
-  @FXML
-  private Button fetchButton;
+  private TabPane tabPane;
 
   @FXML
   private void initialize() {
-    this.planetsListView.setCellFactory(param -> new PlanetListCell());
+    //
   }
 
   @FXML
-  private void onButtonClicked() {
+  private void onAddButtonClicked() {
+    FXMLLoader loader = this.fxmlLoaderInstance.get();
+    try {
+      URL fxml = this.getClass().getResource("/tab.fxml");
+      Parent fxmlParent = loader.load(fxml.openStream());
 
-    this.progressIndicator.setVisible(true);
-    this.fetchButton.setDisable(true);
-
-    this.appService.getPlanets()
-      .onFailure().invoke(failure -> Platform.runLater(() -> {
-          this.planetsListView.getItems().clear();
-          this.countLabel.setText("Error fetching planets");
-          this.progressIndicator.setVisible(false);
-        })
-      ).onItem()
-      .transform(PlanetsResult::results)
-      .subscribe()
-      .with(planets -> Platform.runLater(() -> {
-          this.planetsListView.getItems().setAll(planets);
-          this.countLabel.setText(planets.size() + " planets fetched");
-          this.progressIndicator.setVisible(false);
-          this.fetchButton.setDisable(false);
-        })
-      );
+      Tab tab = new Tab();
+      tab.setText("Tab " + (this.tabPane.getTabs().size() + 1));
+      tab.setContent(fxmlParent);
+      this.tabPane.getTabs().add(tab);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
 }
