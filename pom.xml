@@ -33,8 +33,8 @@
       <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.codesimcoe</groupId>
-      <artifactId>quarkus-fx-extension</artifactId>
+      <groupId>io.quarkiverse</groupId>
+      <artifactId>quarkus-fx</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>

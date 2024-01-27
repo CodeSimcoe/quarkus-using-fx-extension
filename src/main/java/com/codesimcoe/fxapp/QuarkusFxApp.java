@@ -1,6 +1,6 @@
 package com.codesimcoe.fxapp;
 
-import com.codesimcoe.quarkus.fx.extension.runtime.PrimaryStage;
+import io.quarkiverse.fx.PrimaryStage;
 import io.quarkus.dev.spi.HotReplacementSetup;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
