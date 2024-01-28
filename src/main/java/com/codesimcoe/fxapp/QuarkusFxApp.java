@@ -2,6 +2,7 @@ package com.codesimcoe.fxapp;
 
 import io.quarkiverse.fx.PrimaryStage;
 import io.quarkus.dev.spi.HotReplacementSetup;
+import io.quarkus.runtime.Quarkus;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
@@ -24,7 +25,7 @@ public class QuarkusFxApp {
 
 		stage.setOnCloseRequest(event -> {
 			Platform.exit();
-//			System.exit(0);
+			Quarkus.asyncExit();
 		});
 
 		try {
