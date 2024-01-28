@@ -1,7 +1,6 @@
 package com.codesimcoe.fxapp;
 
 import io.quarkiverse.fx.PrimaryStage;
-import io.quarkus.dev.spi.HotReplacementSetup;
 import io.quarkus.runtime.Quarkus;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
@@ -40,11 +39,5 @@ public class QuarkusFxApp {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	// Observe HotReplacementSetup event
-	void onHotReplacementSetup(@Observes final HotReplacementSetup event) {
-		// do something
-//		System.out.println("HotReplacementSetup event fired " + event);
 	}
 }

@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 
 @Dependent
-public class TabController {
+public class PlanetTabController {
 
   @Inject
   AppService appService;
@@ -29,7 +29,7 @@ public class TabController {
 
   @FXML
   private void initialize() {
-    this.planetsListView.setCellFactory(param -> new PlanetListCell());
+    this.planetsListView.setCellFactory(param -> GenericListCell.of(Planet::name));
   }
 
   @FXML
