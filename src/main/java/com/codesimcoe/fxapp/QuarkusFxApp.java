@@ -24,7 +24,7 @@ public class QuarkusFxApp {
 
 		stage.setOnCloseRequest(event -> {
 			Platform.exit();
-			System.exit(0);
+//			System.exit(0);
 		});
 
 		try {
