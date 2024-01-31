@@ -37,6 +37,11 @@
       <artifactId>quarkus-fx</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+    <!-- picocli -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-picocli</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-reactive-jackson</artifactId>

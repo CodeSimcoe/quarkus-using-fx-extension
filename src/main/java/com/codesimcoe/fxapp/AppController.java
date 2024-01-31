@@ -50,6 +50,10 @@ public class AppController {
       tab.setText(tabName + " " + (tabCount + 1));
       tab.setContent(fxmlParent);
       this.tabPane.getTabs().add(tab);
+
+      // Select the newly added tab
+      this.tabPane.getSelectionModel().select(tab);
+
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

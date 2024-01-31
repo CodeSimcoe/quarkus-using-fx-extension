@@ -1,7 +1,6 @@
 package com.codesimcoe.fxapp;
 
 import io.quarkiverse.fx.PrimaryStage;
-import io.quarkus.runtime.Quarkus;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
@@ -12,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 
 @ApplicationScoped
 public class QuarkusFxApp {
@@ -24,12 +23,12 @@ public class QuarkusFxApp {
 
 		stage.setOnCloseRequest(event -> {
 			Platform.exit();
-			Quarkus.asyncExit();
+			System.exit(0);
 		});
 
 		try {
-			URL fxml = this.getClass().getResource("/app.fxml");
-			Parent fxmlParent = this.fxmlLoader.load(fxml.openStream());
+			InputStream stream = this.getClass().getResourceAsStream("/app.fxml");
+			Parent fxmlParent = this.fxmlLoader.load(stream);
 
 			Scene scene = new Scene(fxmlParent, 400, 600);
 			stage.setScene(scene);
